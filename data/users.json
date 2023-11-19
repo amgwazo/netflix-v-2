@@ -1,0 +1,58 @@
+"users": [
+  {
+    "_id": "654b831a477304f0a3f62500",
+    "email": "test@test.com",
+    "username": "test",
+    "password": "$2b$10$ZUMuyr2s6I25vOFGT0cvBe.83lG.vMOZtKfHv6SoLjDgODneL842G",
+    "__v": 0
+  },
+  {
+    "_id": "654b88772f8bab9bd4644716",
+    "email": "user@test.com",
+    "username": "user",
+    "password": "$2b$10$FIT9doXI82XdN14qXuKsw./a0ZBFj/laoMO2dSRrKDPRynVm0Yny6",
+    "__v": 0
+  },
+  {
+    "_id": "6550e896627300c3fff11ec6",
+    "email": "majoza@mojo.com",
+    "username": "majoza",
+    "password": "$2b$10$4KdRynWcwA.sjlQQr6fwWe893b9gmeyP1wi5HJYaCFcTeuwgnrori",
+    "__v": 0
+  },
+  {
+    "_id": "6550e9f0627300c3fff11f14",
+    "email": "mujomba@starface.com",
+    "username": "mujomba",
+    "password": "$2b$10$gJQOcBPn713y5IbguflFquZofpqHrAVjyva3vOjrYpej3xB8F3ylm",
+    "__v": 0
+  },
+  {
+    "_id": "6550f112f6362c1ca3152835",
+    "email": "majozas@mojo.com",
+    "username": "majozas",
+    "password": "$2b$10$wlO/BF.ID39FKd9/Kdt1leksyoNpQuWSdYmVr.lJYGo1sKDEVj3Eu",
+    "__v": 0
+  },
+  {
+    "_id": "6551271e6a57813ea499b4a9",
+    "email": "majoza2@mojo.com",
+    "username": "majoza2",
+    "password": "$2b$10$Jn9Dd/Kp/njN60zo7aJAZ.6A/CoP0dD3B6UU91RbuX6LZ4UNxP0jK",
+    "__v": 0
+  },
+  {
+    "_id": "65524c5b0bd8d89144bba83c",
+    "email": "test1@test.com",
+    "username": "test1",
+    "password": "$2b$10$hiQBML8UpT9koIvW1lZFheCCD5Nts0nAP.PPOb7l2vOb0nlv7Qwg2",
+    "__v": 0
+  },
+  {
+    "_id": "6553858eba64ca6c99efcb72",
+    "email": "feligo@test.com",
+    "username": "feligo",
+    "password": "$2b$10$OeiqQDAPv/wQuqpi9LyVu.SdbP9CRAMS4zJbBEXcQ4m/.NfRnGINa",
+    "__v": 0
+  }
+]

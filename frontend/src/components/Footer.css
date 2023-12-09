@@ -1,0 +1,41 @@
+footer {
+  width: 100%;
+  padding: 0 25% 6% 3%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* color: gray; */
+}
+
+footer span {
+  width: 33%;
+  min-width: 100px;
+}
+
+footer span a {
+  float: left;
+  text-align: left;
+  /* color: gray; */
+  color: white;
+  margin-top: 2%;
+  font-size: smaller;
+}
+
+footer div {
+  margin-top: 3%;
+}
+
+footer div select {
+  min-width: max-content;
+  background-color: black;
+  color: white;
+  border: 1px solid gray;
+  padding: 3% 20%;
+  margin-bottom: 10%;
+  font-size: medium;
+  border-radius: 5px;
+}
+
+footer div span {
+  font-size: smaller;
+}

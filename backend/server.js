@@ -30,8 +30,8 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use("/api", routes);
-app.use("/api", movieRoutes);
+// app.use("/api", routes);
+// app.use("/api/", movieRoutes);
 app.use("/api/", userRoutes);
 
 app.listen(PORT, () => {

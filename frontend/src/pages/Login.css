@@ -1,0 +1,21 @@
+.background-image {
+  width: 100%;
+  min-height: 100vh;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/background_banner.jpg) ; */
+  background-image: url(../images/background_banner.jpg);
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: darken;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 0;
+  margin-top: 0;
+  z-index: -99;
+  /* position: absolute; */
+  /* top: 0; */
+}
+
+.nav {
+    text-decoration: none;
+    float: right;
+
+}

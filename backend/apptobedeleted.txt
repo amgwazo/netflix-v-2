@@ -85,6 +85,17 @@ app.get('/register', async(req, res) => {
     }
 });
 
+//GET USER info
+app.get('/userinfo', async(req, res) => {
+    try{
+        const user = await User.find();
+        res.status(201).json(users);
+
+    }catch(error){
+        res.status(500).json( {error: 'Unable to get Users: ' + error.message} );
+    }
+});
+
 //get login
 
 app.post('/login', async (req, res) => {

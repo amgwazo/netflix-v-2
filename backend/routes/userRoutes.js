@@ -27,6 +27,7 @@ router.post("/register", async (req, res) => {
 
 //GET USERS
 router.get("/register", async (req, res) => {
+
   try {
     const users = await User.find();
     res.status(201).json(users);
@@ -34,6 +35,28 @@ router.get("/register", async (req, res) => {
     res.status(500).json({ error: "Unable to get Users: " + error.message });
   }
 });
+
+//userInfo
+router.get("/userInfo", async (req, res) => {
+  try {
+    let token = req.headers["x-access-token"];
+    if (!token)
+      return res.status(201).send({ auth: false, token: "No Token Provided" });
+
+    jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, data) => {
+      if (err)
+        return res.status(201).send({ auth: false, token: "Invalid Token" });
+
+      const user = await User.findById(data.userId); 
+      res.send(user);
+    });
+  } catch (error) {
+   
+    console.error(error);
+    res.status(500).send({ error: "Something went wrong" });
+  }
+});
+
 
 //get login
 
@@ -55,7 +78,7 @@ router.post("/login", async (req, res) => {
       expiresIn: "1hr",
     });
     // res.status(200).json({message: 'Login successful'});
-    res.status(200).json({ token });
+    res.status(200).json({ token, data: user.email });
   } catch (error) {
     res.status(500).json({ error: "Login error: " + error.message });
   }

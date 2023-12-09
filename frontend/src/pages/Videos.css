@@ -1,0 +1,7 @@
+.nav-bar {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  z-index: 200;
+  top: 0;
+  opacity: 0.95;
+}

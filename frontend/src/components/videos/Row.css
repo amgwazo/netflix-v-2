@@ -1,38 +1,113 @@
-.row{
-    color: white;
-    margin-left: 20px;
+.row {
+  color: white;
+  margin-left: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.row_posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  position: relative;
+  z-index: 1;
+}
+
+
+.row_posters::-webkit-scrollbar {
+  display: none;
+}
+
+.row_poster {
+  max-height: 180px;
+  object-fit: contain;
+  margin-right: 10px;
+  width: 180px;
+  transition: transform 450ms;
+}
+
+.row_poster:hover {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
+.row_posterLarge {
+  max-height: 250px;
+}
+
+.row_posterLarge:hover {
+  transform: scale(1.09);
+  opacity: 1;
+}
+
+
+.arrow-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  top: 170px;
+  z-index: 2;
+}
+
+.arrow-button {
+  /* position: absolute;  */
+   /* top: 50%; */
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 3rem;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.arrow-button:hover {
+  color: #f5c518;
+}
+
+
+.overlay {
+  background-color: rgba(0 0 0 0.20);
+}
+.content {
+  position: fixed;
+  top: 5%;
+  left: 25%;
+  height: 100vh;
+  width: 45%;
+  transform: translate(-50% -50%);
+  background: #000;
+  color: white;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background: #000;
+  overflow-y: scroll;
+}
+
+.modal-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.modal-img{
     width: 100%;
+    margin: 0;
+    height: 300px;
+    /* position: absolute; */
+    /* top: 1; */
 }
 
-.row_posters{
-    display: flex;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    padding: 20px;
-}
 
-.row_posters::-webkit-scrollbar{
-    display: none;
-}
 
-.row_poster{
-    max-height: 180px;
-    object-fit: contain;
-    margin-right: 10px;
-    width: 180px;
-    transition: transform 450ms;
-}
-
-.row_poster:hover{
-    transform: scale(1.08);
-    opacity: 1;
-}
-.row_posterLarge{
-    max-height: 250px;
-}
-
-.row_posterLarge:hover{
-    transform: scale(1.09);
-    opacity: 1;
-}
-
+ .model-text {
+              background-color: white;
+              /* position: absolute; */
+              /* bottom: 0; */
+              /* left: 0; */
+              width: 45%;
+            } 

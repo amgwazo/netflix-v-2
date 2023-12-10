@@ -9,8 +9,20 @@ router.use(bodyParser.json());
 //list all movies
 router.get("/movies",async (req, res) => {
    try {
-    const data = await Movie.find();
+
+    // let token = req.headers["x-access-token"];
+    // if (!token)
+    //   return res.status(201).send({ auth: false, token: "No Token Provided" });
+
+    // jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, data) => {
+    //   if (err)
+    //     return res.status(201).send({ auth: false, token: "Invalid Token" });
+
+    //   const data = await Movie.find();
+    //   res.json(data);
+    // });
     
+    const data = await Movie.find();
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });

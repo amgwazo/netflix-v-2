@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Accordion = ({header, detail}) => {
 
-    console.log(header + " " + detail);
+ 
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {

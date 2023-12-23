@@ -1,5 +1,10 @@
 const bodyParser = require("body-parser");
 const Movie = require("../models/movieSchema");
+const jwt = require("jsonwebtoken");
+const User = require("../models/userSchema.js");
+require("dotenv").config();
+
+const SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 //list all movies
 exports.getMovies = async (req, res) => {
@@ -16,41 +21,58 @@ exports.getMovies = async (req, res) => {
 //filtered movies
 
 exports.filteredMovies = async (req, res) => {
-  let { title, genre_id, lowrating, highrating, sort, page } = req.body;
+ 
+  let token = req.headers["x-access-token"];
+  if (!token)
+    return res.status(201).send({ auth: false, token: "No Token Provided" });
 
-  page = page ? page : Math.floor(Math.random() * 10) + 1;
-  sort = sort ? sort : 1; //1 is ascending -1 is descending
+  jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, data) => {
+    if (err)
+      return res.status(201).send({ auth: false, token: "Invalid Token" });
 
-  let payload = {};
-  let itemsPerPage = 20;
+    
+      //DO FILTER
 
-  let startIndex = itemsPerPage * page - itemsPerPage; //2 * 3 - 2 = 4 ||  assuming user selected page num 3 and each page contains 2 items, based on 0 indexed arrays, start num for page 3 would be 4 therefore => 2 (items/page) * 3 (selected page) = 6 (total pages) - 2 (to get to start item for the current page) = 4
-  let endIndex = itemsPerPage * page; // 2 * 3 = 6
+       let { title, genre_id, lowrating, highrating, sort, page } = req.query;
 
-  if (title) {
-    // payload["title"] = { title: `/.*${title}.*/i` };
-    payload["title"] = { $regex: new RegExp(title, "i") };
-    startIndex = 1;
-  }
+       page = page ? page : Math.floor(Math.random() * 10) + 1;
+       sort = sort ? sort : 1; //1 is ascending -1 is descending
 
-    if (genre_id) {
-      // payload["title"] = { title: `/.*${title}.*/i` };
-      payload["genre_ids"] = { $in: genre_id };
-    }
+       let payload = {};
+       let itemsPerPage = 20;
 
-  //find()
-  Movie.find(payload)
-    .sort({ popularity: sort })
-    .then((response) => {
-      const filteredResponse = response.slice(startIndex, endIndex);
-      res.status(200).json({
-        message: `${filteredResponse.length} Movies fetched successfully.`,
-        movies: filteredResponse,
-      });
-    })
-    .catch((err) => {
-      res.status(400).json({ error: err });
+       let startIndex = itemsPerPage * page - itemsPerPage; //2 * 3 - 2 = 4 ||  assuming user selected page num 3 and each page contains 2 items, based on 0 indexed arrays, start num for page 3 would be 4 therefore => 2 (items/page) * 3 (selected page) = 6 (total pages) - 2 (to get to start item for the current page) = 4
+       let endIndex = itemsPerPage * page; // 2 * 3 = 6
+
+       if (title) {
+         // payload["title"] = { title: `/.*${title}.*/i` };
+         payload["title"] = { $regex: new RegExp(title, "i") };
+         startIndex = 1;
+       }
+
+       if (genre_id) {
+         // payload["title"] = { title: `/.*${title}.*/i` };
+         payload["genre_ids"] = { $in: genre_id };
+       }
+
+       //find()
+       Movie.find(payload)
+         .sort({ popularity: sort })
+         .then((response) => {
+           const filteredResponse = response.slice(startIndex, endIndex);
+           res.status(200).json({
+             message: `${filteredResponse.length} Movies fetched successfully.`,
+             movies: filteredResponse,
+           });
+         })
+         .catch((err) => {
+           res.status(400).json({ error: err });
+         });
+    
+    
     });
+ 
+ 
 }
 
 

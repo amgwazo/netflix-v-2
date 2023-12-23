@@ -1,12 +1,13 @@
 .row {
   color: white;
-  margin-left: 20px;
+  margin: auto;
   position: relative;
   width: 100%;
 }
 
 .row_posters {
   display: flex;
+  flex-wrap: wrap;
   overflow-y: hidden;
   overflow-x: scroll;
   position: relative;
@@ -19,12 +20,11 @@
 }
 
 .row_poster {
-  max-height: 180px;
+  max-height: 550px;
   object-fit: contain;
-  margin-right: 10px;
-  width: 180px;
+  /* width: 35%; */
   transition: transform 450ms;
-  margin-top: 0;
+  margin: 10px auto;
 }
 
 .row_poster:hover {
@@ -42,35 +42,6 @@
 }
 
 
-.arrow-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  position: relative;
-  top: 170px;
-  z-index: 2;
-}
-
-.arrow-button {
-  /* position: absolute;  */
-   /* top: 50%; */
-  transform: translateY(-50%);
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 3rem;
-  color: #fff;
-  transition: all 0.3s ease-in-out;
-  z-index: 1;
-}
-
-.arrow-button:hover {
-  color: #f5c518;
-}
-
-
 .overlay {
   background-color: rgba(0 0 0 0.50);
 }
@@ -79,7 +50,7 @@
   top: 5%;
   left: 25%;
   height: 100vh;
-  width: 45%;
+  width: 35%;
   transform: translate(-50% -50%);
   background: #000;
   color: white;
@@ -96,9 +67,9 @@
 }
 
 .modal-img{
+    
     width: 100%;
-    margin: 0;
-    height: 300px;
+    height: 350px;
     /* position: absolute; */
     /* top: 1; */
 }

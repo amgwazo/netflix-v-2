@@ -13,21 +13,34 @@ if (process.env.NODE_ENV === "production") {
 const Banner = () => {
   // const apiURL = process.env.REACT_APP_TMDB_API_URL;
   const [movie, setMovie] = useState([]);
+  const fetchError = "Something went wrong, no data found.";
 
   useEffect(() => {
 
     //  fetch("http://localhost:3001/api/filteredMovies", {
       fetch(`${apiURL}/filteredMovies`, {
-       method: "POST",
-       headers: {
-         "x-access-token": sessionStorage.getItem("ltk"),
-       },
-     })
-       .then((res) => res.json())
-       .then((data) => {
-        //  console.log(data);
-         setMovie(data.movies[Math.floor(Math.random() * data.movies.length - 1)]);
-       });
+        method: "GET",
+        headers: {
+          "x-access-token": sessionStorage.getItem("ltk"),
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+
+          if (data && data.movies && data.movies.length > 0) {
+            console.log(data);
+            setMovie(
+              data.movies[Math.floor(Math.random() * data.movies.length - 1)]
+              
+            );
+          } else {
+            console.error("Invalid or empty data received from the server.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
     
     // const fetchData = async () => {
     //   const request = await axios.get(requests.fetchNetflixOriginals);
@@ -39,7 +52,7 @@ const Banner = () => {
     // fetchData();
   }, []);
 
-  console.log(movie);
+   console.log(movie);
 
   function truncate(str, n) {
     return str?.length > n ? str.substring(0, n - 1) + "..." : str;
@@ -59,12 +72,15 @@ const Banner = () => {
             <button className="banner_button">My List</button>
           </div>
           <h5 className="banner_description">
-            {truncate(
-              movie?.overview,
+            
+            { movie ?  truncate(
+              movie.overview,
               200
-            )}
+            ) : fetchError }
           </h5>
         </div>
+
+        
 
         <div className="banner_fadeBottom" />
       </header>

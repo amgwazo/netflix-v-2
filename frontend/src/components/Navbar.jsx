@@ -4,6 +4,7 @@ import './Navbar.css';
 import logo from '../images/logo.png';
 import Image from "react-bootstrap/Image";
 import { Nav } from 'react-bootstrap';
+import searchImage from '../images/search.png';
 
 
 let apiURL = process.env.REACT_APP_BASE_URL_DEV;
@@ -63,12 +64,15 @@ useEffect(() => {
             </Link>
           </div>
         ) : null}
-        
       </div>
 
       <ul className="d-flex me-5 mt-3 mb-0 pb-2">
         {userData ? (
           <>
+            <Link to="/search" className="image-button">
+              <img src={searchImage} alt="Search"  class="search-img"/>
+            </Link>
+
             <Link
               to="/account"
               className=" btn btn-sm  btn-danger form-buttons m-2"

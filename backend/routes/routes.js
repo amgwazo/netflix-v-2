@@ -15,6 +15,6 @@ router.post("/register", registerUser);
 router.get("/register", getUsers);
 router.get("/userinfo", getUserInfo);
 router.get("/movies", getMovies);
-router.post("/filteredMovies", filteredMovies);
+router.get("/filteredMovies", filteredMovies);
 
 module.exports = router;

@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "production") {
   //"https://netflix-clone-opav.onrender.com/api";
 }
 
-console.log(apiURL);
+// console.log(apiURL);
 
 
 

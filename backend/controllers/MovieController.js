@@ -1,7 +1,6 @@
 const bodyParser = require("body-parser");
 const Movie = require("../models/movieSchema");
 const jwt = require("jsonwebtoken");
-const User = require("../models/userSchema.js");
 require("dotenv").config();
 
 const SECRET_KEY = process.env.JWT_SECRET_KEY;

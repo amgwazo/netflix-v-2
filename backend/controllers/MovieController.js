@@ -32,13 +32,26 @@ exports.filteredMovies = async (req, res) => {
     
       //DO FILTER
 
-       let { title, genre_id, lowrating, highrating, sort, page } = req.query;
+       let { title, genre_id, lowrating, highrating, sort, page , itemsPerPage} = req.query;
 
-       page = page ? page : Math.floor(Math.random() * 10) + 1;
+       console.log(req.query);
+
+       page = page ? page : Math.floor(Math.random() * 10) + 1; //guaranteed 10 pages in dataset
        sort = sort ? sort : 1; //1 is ascending -1 is descending
 
        let payload = {};
-       let itemsPerPage = 20;
+      //  itemsPerPage = itemsPerPage < 20 ? 20 : 50;
+        if(itemsPerPage >= 200){
+        page = 1;
+
+       }
+       else if(itemsPerPage > 20 && itemsPerPage < 200){
+        itemsPerPage = 50;
+        page = page ? page : Math.floor(Math.random() * 5) + 1; //guaranteed 5 pages in dataset
+       }else
+       {
+        itemsPerPage = 20;
+       }
 
        let startIndex = itemsPerPage * page - itemsPerPage; //2 * 3 - 2 = 4 ||  assuming user selected page num 3 and each page contains 2 items, based on 0 indexed arrays, start num for page 3 would be 4 therefore => 2 (items/page) * 3 (selected page) = 6 (total pages) - 2 (to get to start item for the current page) = 4
        let endIndex = itemsPerPage * page; // 2 * 3 = 6
@@ -46,19 +59,23 @@ exports.filteredMovies = async (req, res) => {
        if (title) {
          // payload["title"] = { title: `/.*${title}.*/i` };
          payload["title"] = { $regex: new RegExp(title, "i") };
-         startIndex = 1;
+        //  startIndex = 1;
        }
 
        if (genre_id) {
          // payload["title"] = { title: `/.*${title}.*/i` };
          payload["genre_ids"] = { $in: genre_id };
        }
+       console.log(`Payload is: ${payload[0]}`)
 
        //find()
        Movie.find(payload)
          .sort({ popularity: sort })
          .then((response) => {
            const filteredResponse = response.slice(startIndex, endIndex);
+           console.log(
+             `${filteredResponse.length} Movies fetched successfully.`
+           );
            res.status(200).json({
              message: `${filteredResponse.length} Movies fetched successfully.`,
              movies: filteredResponse,

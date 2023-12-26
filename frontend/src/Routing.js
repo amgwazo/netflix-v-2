@@ -12,51 +12,52 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const Routing = () => {
+  const [userData, setUserData] = useState("");
+  // let navigate = useNavigate();
 
-    
-const [userData, setUserData] = useState("");
-// let navigate = useNavigate();
+  useEffect(() => {
+    if (sessionStorage.getItem("ltk") != null) {
+      fetch(`${apiURL}/userinfo`, {
+        method: "GET",
+        headers: {
+          "x-access-token": sessionStorage.getItem("ltk"),
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          setUserData(data);
+        });
+    }
+  }, []);
 
-useEffect(() => {
-  if (sessionStorage.getItem("ltk") != null) {
-    fetch(`${apiURL}/userinfo`, {
-      method: "GET",
-      headers: {
-        "x-access-token": sessionStorage.getItem("ltk"),
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setUserData(data);
-        
-      });
-  }
-}, []);
+  console.log(userData);
 
-console.log(userData);
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
 
-    return (
-      <>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/videos" element={<Videos />} />
-          <Route path="/search" element={<Search />} />  
-        </Routes>
-      </>
-    );
-
-}
+        {userData ? (
+          <>
+            <Route path="/videos" element={<Videos />} />
+            <Route path="/search" element={<Search />} />
+          </>
+        ) : (
+          <>
+            
+          </>
+        )}
+      </Routes>
+    </>
+  );
+};
 
 export default Routing;
 
-
-
-
-
-  /* <Route
+/* <Route
             path="/account"
             element={
               userData ? (
@@ -78,7 +79,7 @@ export default Routing;
             }
           /> */
 
-  /* {userData ? (
+/* {userData ? (
             <>
               <Route path="/account" element={<Account />} />
               <Route path="/videos" element={<Videos />} />

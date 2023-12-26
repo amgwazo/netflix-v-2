@@ -25,6 +25,7 @@ const Search = ({ fetchUrl, isLargeRow }) => {
 
   const [genre_id, setGenre_id] = useState("");
   const [title, setTitle] = useState("");
+  const itemsPerPage = 242;
   const [searchHeader, setSearchHeader] = useState("");
   const [selectedOptionText, setSelectedOptionText] = useState("");
   //`Search Results for titles with the key word '${title}'.`
@@ -33,6 +34,7 @@ const Search = ({ fetchUrl, isLargeRow }) => {
     const queryParams = new URLSearchParams({
       title,
       genre_id,
+      itemsPerPage, 
     });
 
     fetch(`${apiURL}/filteredMovies?${queryParams}`, {
@@ -45,7 +47,7 @@ const Search = ({ fetchUrl, isLargeRow }) => {
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.movies);
-        // console.log(data.movies.length);
+        console.log(`${data.movies?.length} movies fetched` );
         console.log(`genre id is ${genre_id}`);
         // setMovieCount(data.movies.length);
       })
@@ -75,7 +77,12 @@ const Search = ({ fetchUrl, isLargeRow }) => {
     if (data) {
       return data.map((item) => {
         return (
-          <option key={item.id} value={item.id}>
+          <option
+            key={item.id}
+            value={item.id}
+            // onSelect={(e) => setGenre_id(setGenre_id(e.target.value))}
+            // onSelect={getFilteredMovies}
+          >
             {item.name}
           </option>
         );
@@ -99,7 +106,12 @@ const Search = ({ fetchUrl, isLargeRow }) => {
         title &&
         setSearchHeader(`Search Results for keyword: ${title}`);
 
-    getFilteredMovies();
+  // if(!title && selectedOptionText !== 'Genres'){
+  //     getFilteredMovies();
+  // }
+
+  getFilteredMovies();
+    
   }, [genre_id, selectedOptionText, title]);
 
 
@@ -107,7 +119,8 @@ const Search = ({ fetchUrl, isLargeRow }) => {
     setGenre_id(event.target.value);
     setSelectedOptionText(
       event.target.options[event.target.selectedIndex].text
-    );    
+    );  
+    setTitle('') ; 
   };
 
     const handleTitle = (event) => {
@@ -134,8 +147,13 @@ const Search = ({ fetchUrl, isLargeRow }) => {
         <div className="search">
           <div className="search-bar">
             <div className="dropdown">
-              <select onChange={handleGenre}>
-                <option>Genres</option>
+              <select
+                onChange={handleGenre}
+                // onChange={e => { handleGenre(e); getFilteredMovies() }}
+              >
+                <option key={""} value={""}>
+                  Genres
+                </option>
                 {renderGenre(genre)}
               </select>
             </div>
@@ -149,104 +167,113 @@ const Search = ({ fetchUrl, isLargeRow }) => {
                 name="searchInput"
                 id="searchInput"
                 onChange={handleTitle}
+                // onChange={(e) => setTitle(e.target.value)}
+                onBlur={getFilteredMovies}
+                placeholder="Type your search keyword"
                 type="text"
                 value={title}
               ></input>
             </div>
           </div>
 
-          <div className="results-panel">
-            <div className="row mt-0">
-              {movies ? (
-                <>
-                  <h5 className="mt-5">{searchHeader}</h5>
+          {movies?.length > 0 ? (
+            <>
+              <div className="results-panel">
+                <div className="row mt-0">
+                  {movies ? (
+                    <>
+                      <h5 className="mt-5">{searchHeader}</h5>
 
-                  {/* <button
+                      {/* <button
         className="arrow-button"
         onClick={() => (movieRowRef.current.scrollLeft -= 200)}
       >
         <i className="fa fa-chevron-left"></i>
       </button> */}
 
-                  <div
-                    className="row_search_posters"
-                    ref={movieRowRef}
-                    id="movie-row"
-                  >
-                    {movies
-                      ? movies.map(
-                          (movie) =>
-                            ((isLargeRow && movie.poster_path) ||
-                              (!isLargeRow && movie.poster_path)) && (
-                              <img
-                                className={`row_search_poster ${
-                                  isLargeRow && "row_search_posterLarge"
-                                } `}
-                                key={movie.id}
-                                src={`${baseURL}${
-                                  isLargeRow
-                                    ? movie.poster_path
-                                    : movie.poster_path
-                                }`}
-                                alt={movie.title}
-                                onClick={() => handleImageClick(movie)}
-                              />
+                      <div
+                        className="row_search_posters"
+                        ref={movieRowRef}
+                        id="movie-row"
+                      >
+                        {movies
+                          ? movies.map(
+                              (movie) =>
+                                ((isLargeRow && movie.poster_path) ||
+                                  (!isLargeRow && movie.poster_path)) && (
+                                  <img
+                                    className={`row_search_poster ${
+                                      isLargeRow && "row_search_posterLarge"
+                                    } `}
+                                    key={movie.id}
+                                    src={`${baseURL}${
+                                      isLargeRow
+                                        ? movie.poster_path
+                                        : movie.poster_path
+                                    }`}
+                                    alt={movie.title}
+                                    onClick={() => handleImageClick(movie)}
+                                  />
+                                )
                             )
-                        )
-                      : null}
-                  </div>
+                          : null}
+                      </div>
 
-                  {/* <button
+                      {/* <button
         className="arrow-button"
         onClick={() => (movieRowRef.current.scrollLeft += 200)}
       >
         <i className="fa fa-chevron-right"></i>
       </button> */}
 
-                  {selectedMovie && (
-                    <Modal
-                      className="overlay content my-5 pb-5"
-                      isOpen={showModal}
-                      onRequestClose={handleCloseModal}
-                    >
-                      <div className="m-5">
-                        <button
-                          className="modal-btn mt-2 me-2 btn btn-sm btn-danger float-end fw-bold "
-                          onClick={handleCloseModal}
+                      {selectedMovie && (
+                        <Modal
+                          className="overlay content my-5 pb-5"
+                          isOpen={showModal}
+                          onRequestClose={handleCloseModal}
                         >
-                          X
-                        </button>
-                      </div>
-                      <div className=" m-0">
-                        <img
-                          className="modal-img"
-                          src={`${baseURL}${selectedMovie.poster_path}`}
-                          alt={selectedMovie.title}
-                        />
-                        <div className="modal-text">
-                          <h2>{selectedMovie.title}</h2>
-                          <p>{selectedMovie.overview}</p>
-                          <span>
-                            Release Date:{" "}
-                            {new Date(
-                              selectedMovie.release_date
-                            ).toLocaleDateString("en-us", {
-                              // weekday: "long",
-                              year: "numeric",
-                              month: "short",
-                              day: "numeric",
-                            })}
-                          </span>
-                          <br />
-                          <span>Rating: {selectedMovie.vote_average}</span>
-                        </div>
-                      </div>
-                    </Modal>
-                  )}
-                </>
-              ) : null}
-            </div>
-          </div>
+                          <div className="m-5">
+                            <button
+                              className="modal-btn mt-2 me-2 btn btn-sm btn-danger float-end fw-bold "
+                              onClick={handleCloseModal}
+                            >
+                              X
+                            </button>
+                          </div>
+                          <div className=" m-0">
+                            <img
+                              className="modal-img"
+                              src={`${baseURL}${selectedMovie.poster_path}`}
+                              alt={selectedMovie.title}
+                            />
+                            <div className="modal-text">
+                              <h2>{selectedMovie.title}</h2>
+                              <p>{selectedMovie.overview}</p>
+                              <span>
+                                Release Date:{" "}
+                                {new Date(
+                                  selectedMovie.release_date
+                                ).toLocaleDateString("en-us", {
+                                  // weekday: "long",
+                                  year: "numeric",
+                                  month: "short",
+                                  day: "numeric",
+                                })}
+                              </span>
+                              <br />
+                              <span>Rating: {selectedMovie.vote_average}</span>
+                            </div>
+                          </div>
+                        </Modal>
+                      )}
+                    </>
+                  ) : null}
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="bg-black text-danger my-5 w-100 m-auto">No movies found meeting your search criteria</div>
+          )}
         </div>
       </div>
     </>

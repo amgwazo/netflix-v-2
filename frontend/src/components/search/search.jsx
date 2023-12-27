@@ -140,9 +140,9 @@ const Search = ({ fetchUrl, isLargeRow }) => {
   return (
     <>
       <div className="h-100 bg-black">
-        <div className="nav-bar d-flex flex-column bg-black  ">
+        {/* <div className="nav-bar d-flex flex-column bg-black  ">
           <Navbar />
-        </div>
+        </div> */}
 
         <div className="search">
           <div className="search-bar">

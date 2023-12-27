@@ -1,0 +1,28 @@
+.movie-form {
+  max-width: 800px; 
+  margin: auto;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.form-col {
+  flex: 1;
+  margin-right: 10px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .form-col {
+    flex: 100%;
+    margin-right: 0;
+  }
+}

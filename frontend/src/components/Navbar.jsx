@@ -42,7 +42,8 @@ useEffect(() => {
   }
 
   return (
-    <Nav className="d-flex justify-content-between ">
+    // <Nav className="nav d-flex justify-content-between "> 
+    <Nav className="nav-main ">
       <div className="d-flex">
         <Link to="/videos">
           <Image

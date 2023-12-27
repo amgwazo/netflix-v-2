@@ -35,9 +35,6 @@ const Routing = () => {
 
   console.log(userData);
 
-
-  
-
   return (
     <>
       <Routes>

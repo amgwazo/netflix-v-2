@@ -2,6 +2,11 @@
   z-index: 100;
 }
 
+.nav-main {
+  display: flex;
+  justify-content: space-between;
+}
+
 .nav-netflix-logo {
   width: 150px;
   height: 30px;

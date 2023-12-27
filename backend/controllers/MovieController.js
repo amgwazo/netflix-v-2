@@ -5,8 +5,98 @@ require("dotenv").config();
 
 const SECRET_KEY = process.env.JWT_SECRET_KEY;
 
+const createMovie = async (req, res) => {
+  try {
+    const {
+      backdrop_path,
+      genre_ids,
+      id,
+      original_language,
+      original_title,
+      overview,
+      popularity,
+      poster_path,
+      release_date,
+      title,
+      video,
+      vote_average,
+      vote_count,
+    } = req.body;
+
+    const newMovie = new Movie({
+      _id: id.toString(),
+      backdrop_path,
+      genre_ids,
+      id,
+      original_language,
+      original_title,
+      overview,
+      popularity,
+      poster_path,
+      release_date,
+      title,
+      video,
+      vote_average,
+      vote_count,
+    });
+
+    const savedMovie = await newMovie.save();
+    res.status(201).json(savedMovie);
+  } catch (error) {
+    if (error.code === 11000) {
+      // MongoDB duplicate key error code
+      res
+        .status(400)
+        .json({
+          error: "Duplicate ID. Movie with the same ID already exists.",
+        });
+    } else {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+};
+
+
+const updateMovie = async (req, res) => {
+  try {
+    const { id } = req.params; // Assuming id is passed as a URL parameter
+    const updatedMovie = req.body;
+
+    const result = await Movie.updateOne({ _id: id }, { $set: updatedMovie });
+
+    if (result.nModified === 1) {
+      res.status(200).json({ message: "Movie updated successfully." });
+    } else {
+      res.status(404).json({ error: "Movie not found." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const deleteMovie = async (req, res) => {
+  try {
+    const { id } = req.params; // Assuming id is passed as a URL parameter
+
+    const result = await Movie.deleteOne({ _id: id });
+
+    if (result.deletedCount === 1) {
+      res.status(200).json({ message: "Movie deleted successfully." });
+    } else {
+      res.status(404).json({ error: "Movie not found." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
+
 //list all movies
-exports.getMovies = async (req, res) => {
+const getMovies = async (req, res) => {
    try {
      const data = await Movie.find();
      res.json(data);
@@ -19,7 +109,7 @@ exports.getMovies = async (req, res) => {
 
 //filtered movies
 
-exports.filteredMovies = async (req, res) => {
+const filteredMovies = async (req, res) => {
  
   let token = req.headers["x-access-token"];
   if (!token)
@@ -66,16 +156,16 @@ exports.filteredMovies = async (req, res) => {
          // payload["title"] = { title: `/.*${title}.*/i` };
          payload["genre_ids"] = { $in: genre_id };
        }
-       console.log(`Payload is: ${payload[0]}`)
+      //  console.log(`Payload is: ${payload[0]}`)
 
        //find()
        Movie.find(payload)
          .sort({ popularity: sort })
          .then((response) => {
            const filteredResponse = response.slice(startIndex, endIndex);
-           console.log(
-             `${filteredResponse.length} Movies fetched successfully.`
-           );
+          //  console.log(
+          //    `${filteredResponse.length} Movies fetched successfully.`
+          //  );
            res.status(200).json({
              message: `${filteredResponse.length} Movies fetched successfully.`,
              movies: filteredResponse,
@@ -91,6 +181,14 @@ exports.filteredMovies = async (req, res) => {
  
 }
 
+module.exports = {
+  createMovie,
+  updateMovie,
+  deleteMovie,
+  getMovies,
+  filteredMovies,
+  
+};
 
 
 

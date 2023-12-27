@@ -70,12 +70,12 @@ const Login = () => {
       fetchUsers();
       // localStorage.setItem("token", token);
       sessionStorage.setItem("ltk", token);
-      // window.location.reload();
+      //  window.location.reload();
 
       
       navigate("/");
       // navigate("/videos");
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
       alert(`${JSON.stringify(error.response.data.error)}`);
     }
@@ -83,9 +83,9 @@ const Login = () => {
 
   return (
     <>
+      {/*Navbar */}
       <div className="background-image d-flex flex-column">
-        {/*Navbar */}
-        <Nav className="d-flex justify-content-between ">
+        {/* <Nav className="d-flex justify-content-between ">
           <Link to="/">
             <Image
               className="nav-netflix-logo m-5"
@@ -93,10 +93,10 @@ const Login = () => {
               alt="Netflix logo"
             />
           </Link>
-        </Nav>
+        </Nav> */}
 
         {/* body / form */}
-        <div className="d-flex w-75 m-auto pt-3 pb-5 mb-5 justify-content-center  ">
+        <div className="d-flex w-75 m-auto mt-5 pt-3 pb-5 mb-5 justify-content-center  ">
           <form
             action="submit"
             method="post"

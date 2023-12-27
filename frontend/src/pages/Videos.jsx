@@ -11,10 +11,10 @@ const Videos = () => {
   return (
     <>
       <div className="h-100 bg-black">
-        <div className="nav-bar d-flex flex-column bg-black  ">
+        {/* <div className="nav-bar d-flex flex-column bg-black  ">
           <Navbar />
          
-        </div>
+        </div> */}
         <Banner />
 
         <Row title="Netflix Originals" fetchUrl isLargeRow />

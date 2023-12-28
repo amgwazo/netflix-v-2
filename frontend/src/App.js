@@ -80,11 +80,12 @@ useEffect(() => {
         
         setUserData(data.auth);
         
+        
       });
   }
 }, []);
 
-// console.log(`Is user logged in : ${userData}`)
+ console.log(`Is user logged in from App.js : ${userData}`)
   
   return <RouterProvider router={router} />;
 }

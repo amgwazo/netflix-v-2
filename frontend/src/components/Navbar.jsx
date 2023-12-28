@@ -50,9 +50,9 @@ useEffect(() => {
 
 
   return (
-    // <Nav className="nav d-flex justify-content-between "> 
+    // <Nav className="nav d-flex justify-content-between ">
     <Nav className="nav-main ">
-      <div className="d-flex">
+      <div className="nav-left">
         <Link to="/videos">
           <Image
             className="nav-netflix-logo ms-5 mt-3 mb-0 pb-0"
@@ -61,25 +61,25 @@ useEffect(() => {
           />
         </Link>
         {userData ? (
-          <div className=" d-flex nav-buttons ms-5">
-            <Link to="/" className=" nav-button m-2">
+          <div className="protected-links d-flex nav-buttons ms-5">
+            <Link to="/" className="text-danger nav-button m-2">
               <li> Home</li>
             </Link>
-            <Link to="/videos" className=" nav-button  m-2">
+            <Link to="/videos" className="text-danger nav-button  m-2">
               <li> TV Shows</li>
             </Link>
-            <Link to="/videos" className=" nav-button m-2">
+            <Link to="/videos" className="text-danger nav-button m-2">
               <li> Movies</li>
             </Link>
           </div>
         ) : null}
       </div>
 
-      <ul className="d-flex me-5 mt-3 mb-0 pb-2">
+      <ul className="nav-right me-5 mt-3 mb-0 pb-2">
         {userData ? (
           <>
             <Link to="/search" className="image-button">
-              <img src={searchImage} alt="Search"  class="search-img"/>
+              <img src={searchImage} alt="Search" class="search-img" />
             </Link>
 
             <Link

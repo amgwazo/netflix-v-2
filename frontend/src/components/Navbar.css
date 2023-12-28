@@ -2,9 +2,27 @@
   z-index: 100;
 }
 
+
+
 .nav-main {
+  /* display: flex;
+  justify-content: space-between; */
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  /* background-color: rgb(77, 73, 73); */
+  /* opacity: 0.5; */
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
 }
 
 .nav-netflix-logo {
@@ -48,3 +66,40 @@ ul{
   
 }
 
+
+
+/* On large screens, float left and right respectively */
+@media (min-width: 768px) {
+  .nav-left {
+    float: left;
+  }
+
+  .nav-right {
+    float: right;
+  }
+}
+
+/* On smaller screens, stack in a column */
+@media (max-width: 767px) {
+  .nav-main {
+    flex-direction: column;
+  }
+
+  .nav-left,
+  .nav-right {
+    float: none;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-right {
+    margin-top: 10px; 
+  }
+
+  .protected-links{
+    display: flex;
+    flex-direction: column;
+  }
+}

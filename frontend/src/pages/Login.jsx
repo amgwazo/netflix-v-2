@@ -3,10 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
-import { Button, Form, Nav } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import "../components/Navbar.css";
-import logo from "../images/logo.png";
-import Image from "react-bootstrap/Image";
 import "./Login.css";
 import Footer from "../components/Footer";
 

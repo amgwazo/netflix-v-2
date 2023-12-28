@@ -29,6 +29,13 @@ useEffect(() => {
       .then((data) => {
         console.log(data);
         setUserData(data);
+        if(data.auth === false) {
+          handleSignOut();
+        };
+
+        if(sessionStorage.getItem("ltk") === null) {
+          handleSignOut();
+        }
       });
   }
 }, []);

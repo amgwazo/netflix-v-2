@@ -126,3 +126,37 @@ margin-top: 10%;
               /* left: 0; */
               width: 45%;
             } 
+
+
+@media (max-width: 1000px){
+
+  .search-bar{
+  margin-top: 25%;
+  }
+
+}
+
+@media (max-width: 764px){
+
+  .search-bar{
+  margin-top: 30%;
+  }
+
+}
+
+@media (max-width: 600px){
+
+  .search-bar{
+  margin-top: 35%;
+  }
+}
+
+  @media (max-width: 300px){
+
+  .search-bar{
+  margin-top: 45%;
+  }
+
+
+}
+  

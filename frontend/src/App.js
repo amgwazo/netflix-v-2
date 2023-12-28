@@ -4,7 +4,6 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  Navigate,
   Route,
   RouterProvider,
 } from "react-router-dom";
@@ -16,6 +15,9 @@ import MovieComponent from "./components/crud/MovieComponent";
 import Videos from "./pages/Videos";
 import Search from "./components/search/search";
 import { useEffect, useState } from "react";
+import NotFound from "./pages/NotFound";
+
+
 
 
 let apiURL = process.env.REACT_APP_BASE_URL_DEV;
@@ -27,8 +29,7 @@ if (process.env.NODE_ENV === "production") {
 function App() {
 
 
-
-const [userData, setUserData] = useState("");
+const [userData, setUserData] = useState(false);
 // let navigate = useNavigate();
 
 
@@ -39,6 +40,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/movie" element={<MovieComponent />} />
+
 
       {userData ? (
         <>
@@ -56,8 +58,10 @@ const router = createBrowserRouter(
           <Route path="/search" element={<Search />} />
         </>
       ) : (
-        <Route path="/videos" element={<Login />} />
+        <Route path="/search" element={<Login />} />
       )}
+
+      <Route path="/*" element={<NotFound />} />
     </Route>
   )
 );
@@ -73,13 +77,14 @@ useEffect(() => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
-        setUserData(data);
+        
+        setUserData(data.auth);
+        
       });
   }
 }, []);
 
-
+// console.log(`Is user logged in : ${userData}`)
   
   return <RouterProvider router={router} />;
 }

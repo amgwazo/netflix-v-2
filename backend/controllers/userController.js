@@ -43,10 +43,11 @@ exports.getUserInfo = async (req, res) => {
         return res.status(201).send({ auth: false, token: "Invalid Token" });
 
       const user = await User.findById(data.userId);
-      res.send(user);
+      res.send({user, auth: true});
     });
   } catch (error) {
     console.error(error);
+    console.log(error.message);
     res.status(500).send({ error: "Something went wrong" });
   }
 };
@@ -71,9 +72,10 @@ exports.login = async (req, res) => {
       expiresIn: "1hr",
     });
     // res.status(200).json({message: 'Login successful'});
-    res.status(200).json({ token, data: user.email });
+    res.status(200).json({ token, data: user.email});
   } catch (error) {
     res.status(500).json({ error: "Login error: " + error.message });
+    // console.log(error.message);
   }
 };
 

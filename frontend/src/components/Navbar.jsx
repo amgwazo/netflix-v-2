@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../images/logo.png';
@@ -17,6 +17,14 @@ const Navbar = () => {
 const [userData, setUserData] = useState("");
 let navigate = useNavigate();
 
+
+  const handleSignOut = useCallback(async () => {
+    sessionStorage.removeItem("ltk");
+    sessionStorage.removeItem("userInfo");
+    setUserData("");
+    navigate("/login");
+  }, []);
+
 useEffect(() => {
   if (sessionStorage.getItem("ltk") != null) {
     fetch(`${apiURL}/userinfo`, {
@@ -31,22 +39,15 @@ useEffect(() => {
         setUserData(data);
         if(data.auth === false) {
           handleSignOut();
-        };
+        }else
 
-        if(sessionStorage.getItem("ltk") === null) {
+        if(sessionStorage.getItem("ltk") == null) {
           handleSignOut();
         }
       });
   }
-}, []);
+}, [handleSignOut]);
 
-  const handleSignOut = () => {
-     sessionStorage.removeItem("ltk");
-     sessionStorage.removeItem("userInfo");
-     setUserData("");
-    navigate('/login');
-
-  }
 
   return (
     // <Nav className="nav d-flex justify-content-between "> 

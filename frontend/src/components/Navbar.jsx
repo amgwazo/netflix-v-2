@@ -71,8 +71,8 @@ useEffect(() => {
             <Link to="/Movie" className="text-danger nav-button m-2">
               <li> Update Movie</li>
             </Link>
-            <Link to="/test" className="text-danger nav-button m-2">
-              <li> Test</li>
+            <Link to="/movielist" className="text-danger nav-button m-2">
+              <li> Movie Listing</li>
             </Link>
           </div>
         ) : null}

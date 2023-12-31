@@ -17,6 +17,7 @@ import Search from "./components/search/search";
 import { useEffect, useState } from "react";
 import NotFound from "./pages/NotFound";
 import YourComponent from "./components/crud/Test";
+import ViewMovie from "./components/crud/ViewMovieList";
 
 
 
@@ -61,7 +62,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/test" element={<YourComponent />} />
+      <Route path="/movielist" element={<ViewMovie />} />
 
       {userData ? (
         <>

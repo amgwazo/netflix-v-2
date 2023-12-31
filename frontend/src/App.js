@@ -16,6 +16,7 @@ import Videos from "./pages/Videos";
 import Search from "./components/search/search";
 import { useEffect, useState } from "react";
 import NotFound from "./pages/NotFound";
+import YourComponent from "./components/crud/Test";
 
 
 
@@ -32,15 +33,46 @@ function App() {
 const [userData, setUserData] = useState(false);
 // let navigate = useNavigate();
 
+useEffect(() => {
+  if (sessionStorage.getItem("ltk") != null) {
+    fetch(`${apiURL}/userinfo`, {
+      method: "GET",
+      headers: {
+        "x-access-token": sessionStorage.getItem("ltk"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        
+        setUserData(data.auth);
+        
+        
+      });
+  }
+}, []);
 
+ console.log(`Is user logged in from App.js : ${userData}`)
+
+
+ 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainLayout />}>
       <Route index element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/movie" element={<MovieComponent />} />
+      <Route path="/test" element={<YourComponent />} />
 
+      {userData ? (
+        <>
+          <Route path="/movie" element={<MovieComponent />} />
+        </>
+      ) : (
+        <>
+          <Route path="/movie" element={<Login />} />
+          {/* <Navigate to="/login" replace /> */}
+        </>
+      )}
 
       {userData ? (
         <>
@@ -67,25 +99,6 @@ const router = createBrowserRouter(
 );
 
 
-useEffect(() => {
-  if (sessionStorage.getItem("ltk") != null) {
-    fetch(`${apiURL}/userinfo`, {
-      method: "GET",
-      headers: {
-        "x-access-token": sessionStorage.getItem("ltk"),
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        
-        setUserData(data.auth);
-        
-        
-      });
-  }
-}, []);
-
- console.log(`Is user logged in from App.js : ${userData}`)
   
   return <RouterProvider router={router} />;
 }

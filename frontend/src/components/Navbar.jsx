@@ -68,8 +68,11 @@ useEffect(() => {
             <Link to="/videos" className="text-danger nav-button  m-2">
               <li> TV Shows</li>
             </Link>
-            <Link to="/videos" className="text-danger nav-button m-2">
-              <li> Movies</li>
+            <Link to="/Movie" className="text-danger nav-button m-2">
+              <li> Update Movie</li>
+            </Link>
+            <Link to="/test" className="text-danger nav-button m-2">
+              <li> Test</li>
             </Link>
           </div>
         ) : null}

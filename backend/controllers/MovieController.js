@@ -60,12 +60,13 @@ const createMovie = async (req, res) => {
 
 const updateMovie = async (req, res) => {
   try {
-    const { id } = req.params; // Assuming id is passed as a URL parameter
+    const { id } = req.query; 
     const updatedMovie = req.body;
+    console.log(id);
+    const result = await Movie.updateOne({ id: id }, { $set: updatedMovie });
+    console.log(result);
 
-    const result = await Movie.updateOne({ _id: id }, { $set: updatedMovie });
-
-    if (result.nModified === 1) {
+    if (result.modifiedCount >= 1) {
       res.status(200).json({ message: "Movie updated successfully." });
     } else {
       res.status(404).json({ error: "Movie not found." });
@@ -78,9 +79,10 @@ const updateMovie = async (req, res) => {
 
 const deleteMovie = async (req, res) => {
   try {
-    const { id } = req.params; // Assuming id is passed as a URL parameter
+    const { id } = req.query; 
+    console.log(id);
 
-    const result = await Movie.deleteOne({ _id: id });
+    const result = await Movie.deleteOne({ id: id });
 
     if (result.deletedCount === 1) {
       res.status(200).json({ message: "Movie deleted successfully." });

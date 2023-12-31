@@ -1,0 +1,382 @@
+{
+"page": 100,
+"results": [
+{
+"adult": false,
+"backdrop_path": "/94hfGX8TSFJdgN0Upq3xnQVAoNW.jpg",
+"genre_ids": [
+10770,
+35,
+10749
+],
+"id": 1027338,
+"original_language": "en",
+"original_title": "We Wish You a Married Christmas",
+"overview": "Becca and Robby are a married couple having a hard time connecting with each other as the holidays approach. Just before Christmas, they head to a cozy Vermont inn at the advice of their marriage coach so they can recharge. Their weekend away gets unexpectedly extended when a mishap puts their car out of commission and just may put them on the road to a very happily married Christmas.",
+"popularity": 11.656,
+"poster_path": "/cZjDTEpZ0SPER7NuuIIjPlGwEP8.jpg",
+"release_date": "2022-10-22",
+"title": "We Wish You a Married Christmas",
+"video": false,
+"vote_average": 5.5,
+"vote_count": 14
+},
+{
+"adult": false,
+"backdrop_path": "/rc4uhKL1IhQE88cqJlfuoJPUBIC.jpg",
+"genre_ids": [
+10770,
+10751,
+99
+],
+"id": 238466,
+"original_language": "en",
+"original_title": "David Blaine: Real or Magic",
+"overview": "David Blaine's signature brand of street magic mystifies the most recognisable celebrities in the world, such as Jamie Foxx, Bryan Cranston, Aaron Paul, Ricky Gervais, Katy Perry, Woody Allen, and Robert DeNiro, to name a few. He goes to the homes of Kanye West and Harrison Ford, Will Smith and Olivia Wilde. He pays a visit to Stephen Hawking at his office in Cambridge University. Blaine also travels the world, astonishing people from all walks of life with never-before seen, inconceivable magic.",
+"popularity": 4.996,
+"poster_path": "/gTMYu8oaAu31PW3wPooGLuM5maA.jpg",
+"release_date": "2013-11-19",
+"title": "David Blaine: Real or Magic",
+"video": false,
+"vote_average": 6.7,
+"vote_count": 80
+},
+{
+"adult": false,
+"backdrop_path": "/aYbrfvKI3jyX75xNTJhSjAfr83P.jpg",
+"genre_ids": [
+10770,
+10749,
+10751,
+18
+],
+"id": 933331,
+"original_language": "en",
+"original_title": "The Presence of Love",
+"overview": "The film follows adjunct professor Joss, who travels to England to visit the farm where her late mother grew up and bonds with single father Daniel, whose family now runs it.",
+"popularity": 5.507,
+"poster_path": "/66IDuc0inPYJ4E8XpvIDtK12eAK.jpg",
+"release_date": "2022-03-13",
+"title": "The Presence of Love",
+"video": false,
+"vote_average": 6.9,
+"vote_count": 16
+},
+{
+"adult": false,
+"backdrop_path": "/rn6iRJ8Q5vJBWQuVpV0pQ3y9gsK.jpg",
+"genre_ids": [
+28,
+12,
+14,
+10770
+],
+"id": 161620,
+"original_language": "en",
+"original_title": "Wonder Woman",
+"overview": "A super-hero uses her powers to thwart an international spy ring.",
+"popularity": 8.088,
+"poster_path": "/eJuphyQM3MDWId1Hk8rF399I3dP.jpg",
+"release_date": "1974-03-12",
+"title": "Wonder Woman",
+"video": false,
+"vote_average": 4.9,
+"vote_count": 28
+},
+{
+"adult": false,
+"backdrop_path": "/pIWMi4ULUsChiHZ768lvqx8OwEh.jpg",
+"genre_ids": [
+53,
+10770
+],
+"id": 672541,
+"original_language": "en",
+"original_title": "Lies For Rent",
+"overview": "Diane is not ready to date but also does not want to attend a work event alone. Her sister suggests a rent-a-date where she can hire a fake boyfriend. Soon, it becomes evident that she has rented a liar with a disturbing past.",
+"popularity": 6.12,
+"poster_path": "/eOu13YKxsqQntKK6O8uKzPRbCGu.jpg",
+"release_date": "2020-02-14",
+"title": "Psycho Escort",
+"video": false,
+"vote_average": 6.5,
+"vote_count": 12
+},
+{
+"adult": false,
+"backdrop_path": "/sSxpIXxcfxdRNy5lWfwrodOeK8V.jpg",
+"genre_ids": [
+35,
+878,
+10770
+],
+"id": 65758,
+"original_language": "en",
+"original_title": "Chicken Park",
+"overview": "Vladimiro travels to the Dominican Republic with his fighting-chicken when it gets stolen. While searching for his lost chicken he discovers Chicken Park, a zoo full of giant chickens.",
+"popularity": 5.998,
+"poster_path": "/r2I4FtgvGePSxinvezLz42PDydw.jpg",
+"release_date": "1996-04-05",
+"title": "Chicken Park",
+"video": false,
+"vote_average": 3.2,
+"vote_count": 50
+},
+{
+"adult": false,
+"backdrop_path": "/5RQ6sdIyKSBBBpYRInaMPSzpFEc.jpg",
+"genre_ids": [
+10770,
+10749,
+35
+],
+"id": 887708,
+"original_language": "en",
+"original_title": "The Wedding Fix",
+"overview": "Reeling from a break-up, professional over-planner Gwen pitches in to help put the finishing touches on her best friend’s wedding. But when she's teamed up with best man Josh, a free-spirited nature guide, she finds that pulling together this wedding might not be as easy as she thought.",
+"popularity": 6.976,
+"poster_path": "/ttToHIbMIYw52a7BhGAiGlRUKjk.jpg",
+"release_date": "2022-03-20",
+"title": "The Wedding Fix",
+"video": false,
+"vote_average": 5.7,
+"vote_count": 15
+},
+{
+"adult": false,
+"backdrop_path": "/dNMI4tXaXnNgmkyBzHyuEpL4aFF.jpg",
+"genre_ids": [
+18,
+10749,
+10770
+],
+"id": 346228,
+"original_language": "en",
+"original_title": "Love, Again",
+"overview": "A couple on the brink of divorce decides to keep their marital woes a secret as they help their daughter plan her wedding. As the two work together on the happy occasion, they soon discover that their own marriage might just be worth saving.",
+"popularity": 9.072,
+"poster_path": "/eMxFVWWzuGBoYuK8mW5haFckP1j.jpg",
+"release_date": "2015-06-21",
+"title": "Love, Again",
+"video": false,
+"vote_average": 6.1,
+"vote_count": 19
+},
+{
+"adult": false,
+"backdrop_path": null,
+"genre_ids": [
+18,
+10770
+],
+"id": 964002,
+"original_language": "en",
+"original_title": "Mark, I Love You",
+"overview": "A distraught widower is caught in a bitter custody battle with his late wife's parents over his 10-year-old son, following his plans to remarry and move off to California with the boy.",
+"popularity": 4.989,
+"poster_path": "/hTgSquMLNBX1asejvDgkc2QTVMy.jpg",
+"release_date": "1980-12-10",
+"title": "Mark, I Love You",
+"video": false,
+"vote_average": 0,
+"vote_count": 0
+},
+{
+"adult": false,
+"backdrop_path": "/ggWV74vWCNjyBaa4dd8SBPMnxzp.jpg",
+"genre_ids": [
+18,
+10752,
+10770
+],
+"id": 70214,
+"original_language": "en",
+"original_title": "The Night Watch",
+"overview": "Four Londoners are inseparably linked by their wartime experiences. In a time when the barriers of sexuality and social convention have been broken down, they enjoy a freedom never experienced before.",
+"popularity": 5.99,
+"poster_path": "/wd2yOcOW7vDB8dYkUwX4rbrNRGH.jpg",
+"release_date": "2011-04-04",
+"title": "The Night Watch",
+"video": false,
+"vote_average": 5.7,
+"vote_count": 33
+},
+{
+"adult": false,
+"backdrop_path": "/xj3j8qKNu6iLsNNUx8AiqVbLDjI.jpg",
+"genre_ids": [
+18,
+10770,
+80
+],
+"id": 942713,
+"original_language": "en",
+"original_title": "Stolen by Their Father",
+"overview": "The story of a mother whose two young daughters are kidnapped by her abusive ex-husband—and her all-consuming fight to get them back.",
+"popularity": 6.255,
+"poster_path": "/m31GJGP8yf0aASFrzrrQe28vvKd.jpg",
+"release_date": "2022-03-05",
+"title": "Stolen by Their Father",
+"video": false,
+"vote_average": 7.9,
+"vote_count": 16
+},
+{
+"adult": false,
+"backdrop_path": "/ecDJQZDK5O4IGaZsTIRfI70kfXM.jpg",
+"genre_ids": [
+53,
+10770
+],
+"id": 23608,
+"original_language": "en",
+"original_title": "Midnight in Saint Petersburg",
+"overview": "Harry Palmer heads a private investigation business based in Moscow. His associates are Nikolai \"Nick\" Petrov, ex-CIA agent Craig, and ex-KGB Colonel Gradsky. They take on the job of finding 1000 grams of weapons-grade plutonium stolen from the Russian government, though they do not know the identity of their client.",
+"popularity": 5.406,
+"poster_path": "/wCW51ACVUu0rofvs6DL2P5EnvEI.jpg",
+"release_date": "1996-10-17",
+"title": "Midnight in Saint Petersburg",
+"video": false,
+"vote_average": 5,
+"vote_count": 22
+},
+{
+"adult": false,
+"backdrop_path": "/s9hdzpvlBMstclRfFzbkaazcKZB.jpg",
+"genre_ids": [
+10749,
+35,
+10770
+],
+"id": 725989,
+"original_language": "en",
+"original_title": "Hint of Love",
+"overview": "A cookbook literary agent with culinary training is tasked with helping elevate the brand of a food channel personality known for his convenience-oriented recipes. However, as the agent works with her client on a new cookbook, playfully clashing over everything from ingredients to tastes, she must choose between following the directions or her heart.",
+"popularity": 5.33,
+"poster_path": "/oxECiPz3IIemAutSa5BBuN6rL8x.jpg",
+"release_date": "2020-07-04",
+"title": "Hint of Love",
+"video": false,
+"vote_average": 6.4,
+"vote_count": 19
+},
+{
+"adult": false,
+"backdrop_path": "/n8lDlCRfhHtOcyFjXgSqe1EJ6JG.jpg",
+"genre_ids": [
+10770,
+35,
+10749
+],
+"id": 795640,
+"original_language": "en",
+"original_title": "Love’s Sweet Recipe",
+"overview": "Talented chef, Mandy Preston’s life has been turned upside down ever since the passing of her father, who was the master chef of her family’s famous restaurant. Now her family business is failing, her love life is in shambles, her passion for cooking has died and her childhood best friend and fellow chef Jake Turner has left town to find work in the big city.",
+"popularity": 4.983,
+"poster_path": "/neHdPF3jA7CmdZcy73IExYq7z34.jpg",
+"release_date": "2023-03-09",
+"title": "Love’s Sweet Recipe",
+"video": false,
+"vote_average": 5.5,
+"vote_count": 2
+},
+{
+"adult": false,
+"backdrop_path": "/pP3HLcCEvxagyWZSMTwtPlr8awE.jpg",
+"genre_ids": [
+10749,
+10770
+],
+"id": 631420,
+"original_language": "en",
+"original_title": "The Mistletoe Secret",
+"overview": "Aria Eubank convinces a famous travel writer to do a feature story on her beloved hometown, however, when the travel guru and his ghostwriter both show up, Aria finds her heart torn between Sterling Masters and Alex Barlett, the man who has genuinely fallen for her.",
+"popularity": 4.981,
+"poster_path": "/upyKcV61QJGIZFLXvACcCQVixAm.jpg",
+"release_date": "2019-11-10",
+"title": "The Mistletoe Secret",
+"video": false,
+"vote_average": 6.7,
+"vote_count": 22
+},
+{
+"adult": false,
+"backdrop_path": "/26SPOgiwiKzXjSSVWLrndaZyWT.jpg",
+"genre_ids": [
+878,
+10770
+],
+"id": 71285,
+"original_language": "en",
+"original_title": "Super Eruption",
+"overview": "A Yellowstone National Park scientist and a thrill-seeking ranger join forces to plug-up a volatile super volcano that threatens to wipe out the entire United States.",
+"popularity": 7.038,
+"poster_path": "/bD6NS982c6w7tqfEM54YgPeQmhY.jpg",
+"release_date": "2011-03-08",
+"title": "Super Eruption",
+"video": false,
+"vote_average": 6.2,
+"vote_count": 43
+},
+{
+"adult": false,
+"backdrop_path": "/l6ARgIB9v7raWOn1B2lDmtY8pw7.jpg",
+"genre_ids": [
+10749,
+10770
+],
+"id": 657325,
+"original_language": "en",
+"original_title": "12 Pups of Christmas",
+"overview": "Recently single and starting a new job in a different city, Erin, a canine therapist, is getting a fresh start. But just when she thought her new life would be the reset she needed, her self-centered boss, Martin, tasks Erin with finding homes for 12 puppies who were left behind after a photo shoot for his struggling GPS locator company - and all before Christmas. As they work together, Erin realizes Martin may not be so bad after all, and her take-charge attitude not only helps Martin save his company, but also reveals a calmer, better self that opens them both up to the idea of love.",
+"popularity": 9.077,
+"poster_path": "/nH5NFwQAjLDoSaGQqnQ2gCchiSP.jpg",
+"release_date": "2019-12-21",
+"title": "12 Pups of Christmas",
+"video": false,
+"vote_average": 5.6,
+"vote_count": 19
+},
+{
+"adult": false,
+"backdrop_path": "/52ECll6cEjiFYDmNCPOARn0d4C6.jpg",
+"genre_ids": [
+10770,
+10749
+],
+"id": 622085,
+"original_language": "en",
+"original_title": "Art of Falling in Love",
+"overview": "A spirited artist with a mysterious bucket list gets a commission to paint a mural on a new hospital wing in a charming community. When she finds herself falling for the handsome architect designing the addition, she must decide if she can trust him with her list, and the painful memory behind it, or if he’ll break her heart and prove that it’s better to be alone than to be close to someone who will leave.",
+"popularity": 4.978,
+"poster_path": "/gOoJElobxic0U0TPLqrapBtdpcG.jpg",
+"release_date": "2019-08-10",
+"title": "Art of Falling in Love",
+"video": false,
+"vote_average": 6.1,
+"vote_count": 17
+},
+{
+"adult": false,
+"backdrop_path": "/y0tqKqtCFZNbqoLcZK1SmPc5CIp.jpg",
+"genre_ids": [
+18,
+53,
+10770
+],
+"id": 608052,
+"original_language": "en",
+"original_title": "Kindred Spirits",
+"overview": "Single mother Chloe has her life turned upside down when her younger sister, Sadie, comes home after a long, unexplained absence. Though Sadie seems to want to settle in with her sister and 17-year-old niece, it soon becomes apparent that she may have sinister intentions.",
+"popularity": 4.978,
+"poster_path": "/qkIimU6crkaoBHdExqkkLbOgtPF.jpg",
+"release_date": "2019-06-16",
+"title": "Kindred Spirits",
+"video": false,
+"vote_average": 6.4,
+"vote_count": 35
+}
+],
+"total_pages": 1149,
+"total_results": 22977
+}

@@ -136,6 +136,7 @@ const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
     <>
       <div className="w-75 ">
         <input
+        hidden
           type="text"
           className="col-8 mb-4"
           value={title}

@@ -42,13 +42,14 @@ const Display = (props) => {
     setCreateMovie(movie);
   };
 
-  const handleClose = () => {
-    setEditMovie(null);
-    props.setTitle = "";
-  };
+  // const handleClose = () => {
+  //   setEditMovie(null);
+  //   props.setTitle = "";
+  // };
 
   // Delete movie
   const handleDeleteMovie = async (movie) => {
+
     const queryParams = new URLSearchParams({
      id: movie.id
    });
@@ -65,14 +66,32 @@ const Display = (props) => {
 
       if (response.ok) {
         setMovieIdToDelete("");
-        props.setTitle(movie.title);
+        props.setItemsPerPage(Math.floor(Math.random() * 100) + 250); //random number between 250 and 350
+        props.setTitle('');
+        alert('Delete Operation Successful.');
         // Fetch updated list of movies
         // fetchMovies();
       } else {
         console.error("Error deleting movie:", response.statusText);
+        alert(`Error deleting movie: ${response.statusText}`);
       }
     } catch (error) {
       console.error("Error deleting movie:", error);
+      alert(`Error deleting movie: ${error}`);
+    }
+  };
+
+
+  const handleConfirmation = (movie) => {
+    const userConfirmed = window.confirm(
+      `Are you sure you want to delete '${movie.title}' ?`
+    );
+
+    if (userConfirmed) {
+      handleDeleteMovie(movie);
+    } else {     
+      console.log("Execution canceled by user");
+      alert("Operation Cancelled by user.")
     }
   };
 
@@ -92,7 +111,7 @@ const Display = (props) => {
               <span>
                 <BsFillTrashFill
                   className="edit-btn ms-2 cursor-pointer"
-                  onClick={() => handleDeleteMovie(item)}
+                  onClick={() => handleConfirmation(item)}
                 />
                 <BsFillPencilFill
                   className="edit-btn ms-2 cursor-pointer"

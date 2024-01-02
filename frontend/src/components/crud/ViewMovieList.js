@@ -11,13 +11,14 @@ if (process.env.NODE_ENV === "production") {
 const ViewMovie = () => {
   const [movies, setMovies] = useState();
   const [title, setTitle] = useState('');
+  const [itemsPerPage, setItemsPerPage] = useState(242);
    
 
   useEffect(() => {
 
    const queryParams = new URLSearchParams({
      title,
-     itemsPerPage : 242
+     itemsPerPage,
    });
 
     fetch(`${apiURL}/filteredMovies?${queryParams}`, {
@@ -35,7 +36,10 @@ const ViewMovie = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [title]);
+  }, [title, itemsPerPage]);
+
+  console.log('Items Per page....');
+  console.log(itemsPerPage);
 
   return (
     <>
@@ -44,11 +48,11 @@ const ViewMovie = () => {
           <div className="panel panel-info mt-5  movie-form">
             <hr />
             <div className="panel-heading">
-              <h3 className="text-secondary">{''}</h3>
+              <h3 className="text-secondary">{""}</h3>
               <div className="vh-50">
                 <>
                   <input
-                  hidden
+                    hidden
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
@@ -56,7 +60,13 @@ const ViewMovie = () => {
                   />
                 </>
 
-                <DisplayMovieList movies={movies} setTitle={setTitle} title={title} />
+                <DisplayMovieList
+                  movies={movies}
+                  setTitle={setTitle}
+                  title={title}
+                  setItemsPerPage={setItemsPerPage}
+                  itemsPerPage={itemsPerPage}
+                />
               </div>
             </div>
           </div>

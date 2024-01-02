@@ -11,12 +11,10 @@ import MainLayout from "./Layout/MainLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import MovieComponent from "./components/crud/MovieComponent";
 import Videos from "./pages/Videos";
 import Search from "./components/search/search";
 import { useEffect, useState } from "react";
 import NotFound from "./pages/NotFound";
-import YourComponent from "./components/crud/Test";
 import ViewMovie from "./components/crud/ViewMovieList";
 
 
@@ -62,15 +60,14 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/movielist" element={<ViewMovie />} />
 
       {userData ? (
         <>
-          <Route path="/movie" element={<MovieComponent />} />
+          <Route path="/admin" element={<ViewMovie />} />
         </>
       ) : (
         <>
-          <Route path="/movie" element={<Login />} />
+          <Route path="/admin" element={<Login />} />
           {/* <Navigate to="/login" replace /> */}
         </>
       )}

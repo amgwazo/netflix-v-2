@@ -13,9 +13,9 @@ const NotFound = () => {
             aria-label="Login"
             className="d-flex flex-column w-50  justify-content-center p-5 my-5 rounded-3 opacity-75 black-bg "
           >
-            <h3 className="text-danger mt-5">Page Not Found</h3>
+            <h3 className="text-white mt-5">Page Not Found</h3>
 
-            <div className="d-flex flex mt-3  text-danger">
+            <div className="d-flex flex mt-3  text-white">
               <span>
                 Sorry, the page you are looking for is not currently available. Please click
                 <Link to="" className="ms-1">

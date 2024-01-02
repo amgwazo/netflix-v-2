@@ -40,11 +40,11 @@ const ViewMovie = () => {
   return (
     <>
       <div className=" h-100 bg-black">
-        <div className="container pt-3">
+        <div className="container pt-5">
           <div className="panel panel-info mt-5  movie-form">
             <hr />
             <div className="panel-heading">
-              <h3 className="text-secondary">Movies</h3>
+              <h3 className="text-secondary">{''}</h3>
               <div className="vh-50">
                 <>
                   <input
@@ -56,7 +56,7 @@ const ViewMovie = () => {
                   />
                 </>
 
-                <DisplayMovieList movies={movies} setTitle={setTitle} />
+                <DisplayMovieList movies={movies} setTitle={setTitle} title={title} />
               </div>
             </div>
           </div>

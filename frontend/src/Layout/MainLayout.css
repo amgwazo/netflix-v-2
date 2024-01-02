@@ -1,14 +1,41 @@
 .root-layout {
   position: relative;
 }
-
+/* .main-layout {position: absolute;
+  top: 170px;  
+  left: 5%;
+  
+}  */
 .navbar-container {
   position: absolute;
   top: 20px;  
   left: 0;
   /* right: 0; */
   width: 100%;
+  height: 150px;
 } 
+
+/* On smaller screens, stack in a column */
+@media (max-width: 767px) {
+.navbar-container {
+  
+  height: 150px;
+  overflow-y: scroll;
+  overflow-x:hidden;
+} 
+  
+.main-layout {position: absolute;
+  top: 170px;  
+  
+} 
+
+.main-layout {position: absolute;
+  display: flex; 
+  flex-wrap: wrap;
+  
+} 
+
+}
 
 /* 
 .root-layout {

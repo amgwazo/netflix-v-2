@@ -4,7 +4,7 @@ import "./MainLayout.css";
 
 export default function MainLayout() {
   return (
-    <div className="root-layout w-100">
+    <div className="root-layout ">
       <div className="navbar-container">
         <Navbar />
       </div>

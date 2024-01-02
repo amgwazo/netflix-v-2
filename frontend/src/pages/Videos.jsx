@@ -1,4 +1,3 @@
-import Navbar from '../components/Navbar';
 import Banner from '../components/videos/Banner';
 import './Videos.css';
 import Row from '../components/videos/Row';

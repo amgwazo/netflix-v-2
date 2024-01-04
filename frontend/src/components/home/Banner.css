@@ -2,7 +2,7 @@
 
 
 .banner-text {
-  width: 100%;
+  width: 85%;
   position: absolute;
   top: 5%;
   display: flex;
@@ -51,4 +51,30 @@
 .nav-btn { 
   background-color: rgb(223, 19, 19);
   border-color: rgb(223, 19, 19);
+}
+
+/* On smaller screens, stack in a column */
+@media (max-width: 767px) {
+
+  .banner-text h1, h3 {
+    font-size: 150%;
+  }
+
+  .banner-text h3 {
+    font-size: 100%;
+  }
+
+.banner-text div form input {
+  width: 25%;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.banner-text div form button {
+  width: max-content;
+  font-size: small;
+  font-weight:normal;
+}
+
+ 
 }

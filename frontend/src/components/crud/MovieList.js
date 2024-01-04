@@ -62,6 +62,9 @@ const Display = (props) => {
       
       const response = await fetch(`${apiURL}/movies?${queryParams}`, {
         method: "DELETE",
+        headers: {
+          "x-access-token": sessionStorage.getItem("ltk"),
+        },
       });
 
       if (response.ok) {

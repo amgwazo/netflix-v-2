@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Modal from "react-modal";
 import "./Search.css";
-import Navbar from "../Navbar";
 import { Link } from "react-router-dom";
 import searchImage from '../../images/search.png';
 // import axios from "./Axios";
@@ -96,7 +95,7 @@ const Search = ({ fetchUrl, isLargeRow }) => {
 
     
     selectedOptionText && title &&
-      setSearchHeader(`Search Results for keyword: ${title} under category : ${selectedOptionText}`);
+      setSearchHeader(`Search Results for keyword: ${title.toUpperCase()}, under category : ${selectedOptionText.toUpperCase()}`);
 
     selectedOptionText &&
       !title &&
@@ -159,9 +158,9 @@ const Search = ({ fetchUrl, isLargeRow }) => {
             </div>
 
             <div className="w-75">
-              <Link to="" className="image-button">
+              {/* <Link to="" className="image-button">
                 <img src={searchImage} alt="Search" class="search-img" />
-              </Link>
+              </Link> */}
 
               <input
                 name="searchInput"

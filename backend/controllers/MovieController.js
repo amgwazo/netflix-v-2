@@ -6,59 +6,89 @@ require("dotenv").config();
 const SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 const createMovie = async (req, res) => {
-  try {
-    const {
-      backdrop_path,
-      genre_ids,
-      id,
-      original_language,
-      original_title,
-      overview,
-      popularity,
-      poster_path,
-      release_date,
-      title,
-      video,
-      vote_average,
-      vote_count,
-    } = req.body;
+  let token = req.headers["x-access-token"];
+  if (!token)
+    return res.status(201).send({ auth: false, token: "No Token Provided" });
 
-    const newMovie = new Movie({
-      _id: id.toString(),
-      backdrop_path,
-      genre_ids,
-      id,
-      original_language,
-      original_title,
-      overview,
-      popularity,
-      poster_path,
-      release_date,
-      title,
-      video,
-      vote_average,
-      vote_count,
-    });
+  jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, data) => {
+    if (err)
+      return res.status(201).send({ auth: false, token: "Invalid Token" });
 
-    const savedMovie = await newMovie.save();
-    res.status(201).json(savedMovie);
-  } catch (error) {
-    if (error.code === 11000) {
-      // MongoDB duplicate key error code
-      res
-        .status(400)
+      console.log('inside Create Movie');
+      console.log(data);
+      console.log(data.role);
+
+    // Check user role
+    if (data.role !== "admin") {
+      return res
+        .status(403)
         .json({
+          auth: false,
+          message: "Access Denied. Admin role required.",
+        });
+    }
+
+    try {
+      const {
+        backdrop_path,
+        genre_ids,
+        id,
+        original_language,
+        original_title,
+        overview,
+        popularity,
+        poster_path,
+        release_date,
+        title,
+        video,
+        vote_average,
+        vote_count,
+      } = req.body;
+
+      const newMovie = new Movie({
+        _id: id.toString(),
+        backdrop_path,
+        genre_ids,
+        id,
+        original_language,
+        original_title,
+        overview,
+        popularity,
+        poster_path,
+        release_date,
+        title,
+        video,
+        vote_average,
+        vote_count,
+      });
+
+      const savedMovie = await newMovie.save();
+      res.status(201).json(savedMovie);
+    } catch (error) {
+      if (error.code === 11000) {
+        // MongoDB duplicate key error code
+        res.status(400).json({
           error: "Duplicate ID. Movie with the same ID already exists.",
         });
-    } else {
-      console.error(error);
-      res.status(500).json({ error: "Internal Server Error" });
+      } else {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+      }
     }
-  }
-};
+  });
+}
 
 
 const updateMovie = async (req, res) => {
+
+  let token = req.headers["x-access-token"];
+  if (!token)
+    return res.status(201).send({ auth: false, token: "No Token Provided" });
+
+  jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, data) => {
+    if (err)
+      return res.status(201).send({ auth: false, token: "Invalid Token" });
+
   try {
     const { id } = req.query; 
     const updatedMovie = req.body;
@@ -75,9 +105,20 @@ const updateMovie = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+
+});
+}
 
 const deleteMovie = async (req, res) => {
+
+  let token = req.headers["x-access-token"];
+  if (!token)
+    return res.status(201).send({ auth: false, token: "No Token Provided" });
+
+  jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, data) => {
+    if (err)
+      return res.status(201).send({ auth: false, token: "Invalid Token" });
+
   try {
     const { id } = req.query; 
     console.log(id);
@@ -93,12 +134,22 @@ const deleteMovie = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
+}
 
 
 
 //list all movies
 const getMovies = async (req, res) => {
+
+  let token = req.headers["x-access-token"];
+  if (!token)
+    return res.status(201).send({ auth: false, token: "No Token Provided" });
+
+  jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, data) => {
+    if (err)
+      return res.status(201).send({ auth: false, token: "Invalid Token" });
+
    try {
      const data = await Movie.find();
      res.json(data);
@@ -106,7 +157,8 @@ const getMovies = async (req, res) => {
      res.status(500).json({ message: error.message });
    }
   
-};
+});
+}
 
 
 //filtered movies

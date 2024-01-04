@@ -12,8 +12,10 @@ import GetStarted from "../components/home/GetStarted";
 const Home = () => {
   return (
     <div className="homepage">
+
+     
       <div className="header  d-flex flex-column pt-5">
-        {/* <Navbar /> */}
+       
         <Banner />
       </div>
       {/* Enjoy your tv   */}

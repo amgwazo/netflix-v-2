@@ -99,9 +99,9 @@ const handleErrorResponse = (errorData) => {
 
   return (
     <>
-      <div className="d-flex flex-column">
-        <Navbar className="" />
-        <hr />
+      <div className="d-flex flex-column pt-5">
+        {/* <Navbar className="" /> */}
+        <hr className='mt-5' />
 
         <div className="d-flex w-75 m-auto pt-3  justify-content-center ">
           <form
@@ -119,12 +119,14 @@ const handleErrorResponse = (errorData) => {
             <input
               type="text"
               name="Email"
+              required
               placeholder="Email "
               className="p-2 mt-2"
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="text"
+              required
               name="Username"
               placeholder="Username "
               className="p-2 mt-2"
@@ -133,6 +135,7 @@ const handleErrorResponse = (errorData) => {
 
             <input
               type="password"
+              required
               name="Password"
               placeholder="Add a password"
               className="p-2 mt-2"

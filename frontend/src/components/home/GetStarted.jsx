@@ -14,7 +14,7 @@ const GetStarted = () => {
         title="submit"
         className=" btn-danger form-buttons"
       >
-        <Link to="/signup" className=" btn btn-lg text-white  ">
+        <Link to="/signup" className=" btn btn-md text-white  ">
           <span>Get Started {">"} </span>
         </Link>
       </button>

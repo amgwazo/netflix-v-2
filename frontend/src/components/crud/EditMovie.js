@@ -45,6 +45,7 @@ const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-access-token": sessionStorage.getItem("ltk"),
         },
         body: JSON.stringify(updatedMovie),
       });
@@ -67,11 +68,14 @@ const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
           vote_average: 0,
           vote_count: 0,
         });
-      } else {
+      } 
+      else {
         console.error("Error Creating movie:", response.statusText);
+        alert(`Error Creating movie: ${response.statusText}`);
       }
     } catch (error) {
       console.error("Error Creating movie:", error);
+      alert(`Error Creating movie: ${error}`);
     }
   };
 
@@ -87,6 +91,7 @@ const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          "x-access-token": sessionStorage.getItem("ltk"),
         },
         body: JSON.stringify(updatedMovie),
       });
@@ -111,9 +116,11 @@ const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
         });
       } else {
         console.error("Error updating movie:", response.statusText);
+        alert(`Error updating movie: ${response.statusText}`);
       }
     } catch (error) {
       console.error("Error updating movie:", error);
+      alert(`Error updating movie: ${error}`);
     }
   };
 

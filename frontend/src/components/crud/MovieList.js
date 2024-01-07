@@ -74,12 +74,15 @@ const Display = (props) => {
         alert('Delete Operation Successful.');
         // Fetch updated list of movies
         // fetchMovies();
+      }  else {
+      const errorData = await response.json(); // Attempt to parse error as JSON
+      if (errorData && errorData.error) {
+        alert(`Error deleting movie: ${errorData.error}`);
       } else {
-        console.error("Error deleting movie:", response.statusText);
         alert(`Error deleting movie: ${response.statusText}`);
       }
+    }
     } catch (error) {
-      console.error("Error deleting movie:", error);
       alert(`Error deleting movie: ${error}`);
     }
   };

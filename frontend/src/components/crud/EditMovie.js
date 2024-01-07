@@ -8,6 +8,8 @@ if (process.env.NODE_ENV === "production") {
 
 const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
   // const EditMovie = ({props }) => {
+const [genres, setGenres] = useState([]);
+
   const [updatedMovie, setUpdatedMovie] = useState({
     adult: movie.adult,
     backdrop_path: movie.backdrop_path,
@@ -25,19 +27,45 @@ const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
     vote_count: movie.vote_count,
   });
 
-  const handleInputChange = (e) => {
-    console.log("input change");
+  // const handleInputChange = (e) => {
 
-    const { name, value, type, checked } = e.target;
-    setUpdatedMovie({
-      ...updatedMovie,
-      [name]: value,
-      [name]: type === "checkbox" ? checked : value,
-    });
+  //   const { name, value, type, checked } = e.target;
+  //   setUpdatedMovie({
+  //     ...updatedMovie,
+  //     [name]: value,
+  //     [name]: type === "checkbox" ? checked : value,
+  //   });
+  // };
+
+
+  const handleInputChange = (e) => {
+    const { name, options, type, checked } = e.target;
+
+    // Handle multi-select dropdown separately
+    if (type === "select-multiple") {
+      const selectedOptions = Array.from(options)
+        .filter((option) => option.selected)
+        .map((option) => option.value);
+
+      setUpdatedMovie((prevMovie) => ({
+        ...prevMovie,
+        [name]: selectedOptions,
+      }));
+    } else {
+      // Handle other input types
+      setUpdatedMovie((prevMovie) => ({
+        ...prevMovie,
+        [name]: type === "checkbox" ? checked : e.target.value,
+      }));
+    }
   };
+
 
   // Update movie
   const handleCreateMovie = async () => {
+
+    console.log('Handle Create Movie');
+    console.log(updatedMovie);
 
     try {
       // const response = await fetch(`/api/movies/${updatedMovie.id}`, {
@@ -51,7 +79,7 @@ const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
       });
 
       if (response.ok) {
-        setUpdatedMovie({ 
+        setUpdatedMovie({
           // Reset updatedMovie state after successful update
           adult: false,
           backdrop_path: "",
@@ -68,14 +96,16 @@ const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
           vote_average: 0,
           vote_count: 0,
         });
-      } 
-      else {
-        console.error("Error Creating movie:", response.statusText);
-        alert(`Error Creating movie: ${response.statusText}`);
+      } else {
+        const errorData = await response.json(); 
+        if (errorData && errorData.error) {
+          alert(`Error creating movie: ${errorData.error}`);
+        } else {
+          alert(`Error creating movie: ${response.statusText}`);
+        }
       }
     } catch (error) {
-      console.error("Error Creating movie:", error);
-      alert(`Error Creating movie: ${error}`);
+      alert("Error creating movie:", error);
     }
   };
 
@@ -114,10 +144,14 @@ const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
           vote_average: 0,
           vote_count: 0,
         });
+      }  else {
+      const errorData = await response.json(); // Attempt to parse error as JSON
+      if (errorData && errorData.error) {
+        alert(`Error updating movie: ${errorData.error}`);
       } else {
-        console.error("Error updating movie:", response.statusText);
         alert(`Error updating movie: ${response.statusText}`);
       }
+    }
     } catch (error) {
       console.error("Error updating movie:", error);
       alert(`Error updating movie: ${error}`);
@@ -125,9 +159,21 @@ const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
   };
 
   useEffect(() => {
-    console.log("useEffect is running");
-    console.log(updatedMovie);
+    fetchGenres();
+    console.log(updatedMovie); //this line is used to force the update
   }, [updatedMovie]);
+
+
+  const fetchGenres = async () => {
+    try {
+      const response = await fetch(`${apiURL}/genre`); 
+      const data = await response.json();
+      setGenres(data);
+    } catch (error) {
+      console.error("Error fetching genres:", error);
+    }
+  };
+  
 
   const handleSaveMovie = async () => {
     if (operation === "addMovie") {
@@ -143,14 +189,13 @@ const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
     <>
       <div className="w-75 ">
         <input
-        hidden
+          hidden
           type="text"
           className="col-8 mb-4"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Search by title"
         />
-
       </div>
       <div className=" h-100 bg-black m-0 p-0">
         <div className="container bg-white m-0 p-0">
@@ -306,16 +351,34 @@ const EditMovie = ({setTitle, title, movie, onClose, operation }) => {
                 </div>
 
                 <div className="mt-3 col-md-3 form-group">
-                  <label for="genre_ids" className="control-label">
-                    Genre Ids
+                  <label
+                    for="genre_ids"
+                    className="control-label align-top me-3 "
+                  >
+                    Genre
                   </label>
-                  <input
+
+                  <select
+                    multiple
+                    id="genre_ids"
+                    name="genre_ids"
+                    value={updatedMovie.genre_ids}
+                    onChange={handleInputChange}
+                    required
+                  >
+                    {genres.map((genre) => (
+                      <option key={genre.id} value={genre.id}>
+                        {genre.name}
+                      </option>
+                    ))}
+                  </select>
+                  {/* <input
                     className="form-control"
                     id="genre_ids"
                     name="genre_ids"
                     value={updatedMovie?.genre_ids}
                     onChange={handleInputChange}
-                  />
+                    /> */}
                 </div>
                 <div className="mt-3 col-md-12 form-group">
                   <label for="overview" className="control-label">

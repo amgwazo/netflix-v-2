@@ -14,17 +14,13 @@ const createMovie = async (req, res) => {
     if (err)
       return res.status(201).send({ auth: false, token: "Invalid Token" });
 
-      console.log('inside Create Movie');
-      console.log(data);
-      console.log(data.role);
-
     // Check user role
     if (data.role !== "admin") {
       return res
         .status(403)
         .json({
           auth: false,
-          message: "Access Denied. Admin role required.",
+          error: "Access Denied, Admin role required.",
         });
     }
 
@@ -89,24 +85,31 @@ const updateMovie = async (req, res) => {
     if (err)
       return res.status(201).send({ auth: false, token: "Invalid Token" });
 
-  try {
-    const { id } = req.query; 
-    const updatedMovie = req.body;
-    console.log(id);
-    const result = await Movie.updateOne({ id: id }, { $set: updatedMovie });
-    console.log(result);
-
-    if (result.modifiedCount >= 1) {
-      res.status(200).json({ message: "Movie updated successfully." });
-    } else {
-      res.status(404).json({ error: "Movie not found." });
+    // Check user role
+    if (data.role !== "admin") {
+      return res.status(403).json({
+        auth: false,
+        error: "Access Denied, Admin role required.",
+      });
     }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
 
-});
+    try {
+      const { id } = req.query;
+      const updatedMovie = req.body;
+      console.log(id);
+      const result = await Movie.updateOne({ id: id }, { $set: updatedMovie });
+      console.log(result);
+
+      if (result.modifiedCount >= 1) {
+        res.status(200).json({ message: "Movie updated successfully." });
+      } else {
+        res.status(404).json({ error: "Movie not found." });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
 }
 
 const deleteMovie = async (req, res) => {
@@ -119,22 +122,30 @@ const deleteMovie = async (req, res) => {
     if (err)
       return res.status(201).send({ auth: false, token: "Invalid Token" });
 
-  try {
-    const { id } = req.query; 
-    console.log(id);
-
-    const result = await Movie.deleteOne({ id: id });
-
-    if (result.deletedCount === 1) {
-      res.status(200).json({ message: "Movie deleted successfully." });
-    } else {
-      res.status(404).json({ error: "Movie not found." });
+    // Check user role
+    if (data.role !== "admin") {
+      return res.status(403).json({
+        auth: false,
+        error: "Access Denied, Admin role required.",
+      });
     }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
+
+    try {
+      const { id } = req.query;
+      console.log(id);
+
+      const result = await Movie.deleteOne({ id: id });
+
+      if (result.deletedCount === 1) {
+        res.status(200).json({ message: "Movie deleted successfully." });
+      } else {
+        res.status(404).json({ error: "Movie not found." });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
 }
 
 
@@ -149,6 +160,8 @@ const getMovies = async (req, res) => {
   jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, data) => {
     if (err)
       return res.status(201).send({ auth: false, token: "Invalid Token" });
+
+      
 
    try {
      const data = await Movie.find();

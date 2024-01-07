@@ -68,13 +68,12 @@ useEffect(() => {
             <Link to="/videos" className="text-danger nav-button  m-2">
               <li> TV Shows</li>
             </Link>
+            
             {userData.user.role === "admin" && (
               <Link to="/admin" className="text-danger nav-button m-2">
                 <li>Admin Panel</li>
               </Link>
             )}
- 
-              
           </div>
         ) : null}
       </div>
